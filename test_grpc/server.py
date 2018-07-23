@@ -8,13 +8,15 @@ import grpc
 from .greater_sdk import greater_pb2
 from .greater_sdk import greater_pb2_grpc
 
+
 _ONE_DAY_IN_SECONDS = 60 * 60 * 24
 
 
 class Greeter(greater_pb2_grpc.GreeterServicer):
 
     def SayHello(self, request, context):
-        return greater_pb2.HelloReply(message='Hello, %s!' % request.name)
+        return greater_pb2.HelloReply(message='Hello, %s!' % request.name,
+                                      name=request.name)
 
 
 def serve():
